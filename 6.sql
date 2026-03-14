@@ -15,3 +15,6 @@ CREATE INDEX idx_resumes_title_total_experience ON resumes(title, total_experien
 
 -- Для поиска откликов на конкретную вакансию
 CREATE INDEX idx_responses_vacancy ON responses(vacancy_id);
+
+-- Для поиска откликов на конкретную вакансию по дате
+CREATE INDEX idx_responses_created_at ON responses(vacancy_id, created_at);

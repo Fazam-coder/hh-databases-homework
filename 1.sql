@@ -29,8 +29,6 @@ CREATE TABLE resumes (
     about_me TEXT,
     desired_salary INTEGER, -- Желаемая зарплата
     total_experience_years INTEGER,
-    work_history TEXT,
-    education TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -41,7 +39,9 @@ CREATE TABLE responses (
     resume_id BIGINT NOT NULL REFERENCES resumes(id),
     cover_letter TEXT, -- Сопроводительное письмо
     employer_comment TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+
+    UNIQUE(vacancy_id, resume_id)
 );
 
 -- 5. Связь специализаций и вакансий (Many-to-Many)
